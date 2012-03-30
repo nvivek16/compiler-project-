@@ -1,0 +1,5 @@
+svm_multiclass_learn -c 500 output model
+svm_multiclass_classify output1 model pred
+cat pred | awk {'print $1'} > o
+sudo cp o /opt/lampp/htdocs/compiler/
+

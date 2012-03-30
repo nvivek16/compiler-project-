@@ -1,0 +1,144 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Content based Ad Classification</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="bootstrap/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="bootstrap/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="bootstrap/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="bootstrap/ico/apple-touch-icon-57-precomposed.png">
+
+<script type="text/javascript" src="jquery-1.5.1.js"></script>
+<script type="text/javascript">
+var page=[];
+$(document).ready(function(){
+$('#mail').load("maillist.php");
+$.getJSON("ad.php",function(data){
+
+for(var i in data){
+	page.push(data[i]);
+	}
+});
+$('a').live('click',function(){
+	$('#mail').load("mail/"+($('a').attr('id')));
+	$('#content').append("<input id='back' type='button' value='back'>");
+});
+$('#back').live('click',function(){
+	$('#mail').load("maillist.php");
+	$('#back').remove();
+
+});
+});
+var count=page.length;
+var i=1;
+var s=self.setInterval("display()",1000);
+function display()
+{
+
+var p=page[0]+'/'+page[i];
+document.getElementById("display").innerHTML="<img src='"+p+"' height='500' width='750'>";
+i++;
+if(i==page.length)
+	i=1;
+
+}
+</script>
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">Content based Ad Classification</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li><a href="display1.php">Home</a></li>
+              <li class="active"><a href="about.html">About</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+
+
+    <div class="container">
+
+      <h1>Content Based Ad Classification</h1>
+
+<br/<br/><h2>Project Description</h2>
+		<p>Our project is to display advertisements based on the mails
+		received. We have taken three categories into account namely -
+		Sports, Education, and Health. Using a training set, we train the
+		system to understand how a mail of a particular category will
+		look. Our system uses Support Vector Machines Multiclass
+		Algorithm. Next, we tried to test our system using a set of
+		mails. SVM classifies each mail to a category. We then display
+		advertisements of the category which have maximum mails.</p>
+<br/><br/><h2>Web Scraper</h2>
+<p>We used a web scrapper written in Python to automatically scrape various data from the internet which was used as the training set for the system. By using scrapper we were able to train the system with large amounts of data.</p>
+
+<br/><br/><h2>SVM Multiclass</h2>
+
+      <p>Multiclass SVM aims to assign labels to instances by using support vector machines, where the labels are drawn from a finite set of several elements.
+The dominant approach for doing so is to reduce the single multiclass
+      problem into multiple binary classification problems.</p>
+
+      <br/><br/><h2>Front End</h2>
+      <p>The advertisements are displayed using a web application
+      written in PHP. The Python backend writes the results to a file
+      which is read by the PHP application. The web app then
+      walks through the advertisements of the selected category and
+      sends it as a JSON file object to the webapp in the form of an
+      AJAX request. </p>
+<br/><br/><h2>Team</h2>
+      <p>Vivekanandhan - 2009103070</p>
+      <p>Sathyanarayanan - 2009103600</p>
+
+    </div> <!-- /container -->
+
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="bootstrap/js/jquery.js"></script>
+    <script src="bootstrap/js/bootstrap-transition.js"></script>
+    <script src="bootstrap/js/bootstrap-alert.js"></script>
+    <script src="bootstrap/js/bootstrap-modal.js"></script>
+    <script src="bootstrap/js/bootstrap-dropdown.js"></script>
+    <script src="bootstrap/js/bootstrap-scrollspy.js"></script>
+    <script src="bootstrap/js/bootstrap-tab.js"></script>
+    <script src="bootstrap/js/bootstrap-tooltip.js"></script>
+    <script src="bootstrap/js/bootstrap-popover.js"></script>
+    <script src="bootstrap/js/bootstrap-button.js"></script>
+    <script src="bootstrap/js/bootstrap-collapse.js"></script>
+    <script src="bootstrap/js/bootstrap-carousel.js"></script>
+    <script src="bootstrap/js/bootstrap-typeahead.js"></script>
+
+</body>
+</html>
